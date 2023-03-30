@@ -97,7 +97,7 @@ def testmodel(filename):
     files = os.listdir('./uploads')
     if (filename):
         model = tf.keras.models.load_model(
-            r'F:\gaurav\pldds-backend\models\5-conv-32-nodes-1-dense-1583918600.h5')
+            r'.\models\5-conv-128-nodes-2-dense-1583918748.h5')
         img_array = cv2.imread(f'.//uploads//'+str(filename))
         img_array = cv2.cvtColor(img_array, cv2.COLOR_BGR2RGB)
 
@@ -106,8 +106,8 @@ def testmodel(filename):
         new_array = new_array / 255.0
 
         category = ['Brown Spot', 'Leaf Blast', 'Bacterial Blight']
-        predict=model.predict([new_array]) 
-        classes=np.argmax(predict,axis=1)
+        predict = model.predict([new_array])
+        classes = np.argmax(predict, axis=1)
         # pred = model.predict_classes([new_array])
         cat = category[classes[0]]
         pred = model.predict([new_array])
